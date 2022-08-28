@@ -1,0 +1,83 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Tip Calculator</title>
+  </head>
+  <body>
+    <header>
+      <div class="page-title">
+        <h1>spli<br />tter</h1>
+      </div>
+    </header>
+    <main class="calculator">
+      <div class="inputs-screen-container">
+        <section class="input-container">
+          <div class="bill-amount">
+            <div class="input-label">
+              <p class="descr">Bill</p>
+              <p class="error active" id="bill-error">Can't be zero</p>
+            </div>
+            <input
+              type="number"
+              class="bill-input"
+              placeholder="0"
+              required
+              aria-label="Please enter bill amount"
+            />
+          </div>
+          <div class="button-container">
+            <p class="descr">Select tip %</p>
+            <div class="btn-grid">
+              <button class="btn" id="five-percent">5%</button>
+              <button class="btn" id="ten-percent">10%</button>
+              <button class="btn" id="fifteen-percent">15%</button>
+              <button class="btn" id="twentyfive-percent">25%</button>
+              <button class="btn" id="fifty-percent">50%</button>
+              <input
+                class="custom-input"
+                type="number"
+                placeholder="Custom"
+                aria-label="custom value to calculate tip"
+              />
+              <p class="custom-error active" id="custom-error">Can't be zero</p>
+            </div>
+          </div>
+          <div class="number-people">
+            <div class="input-label">
+              <p class="descr">Number of people</p>
+              <p class="error active" id="people-error">Can't be zero</p>
+            </div>
+            <input
+              type="number"
+              class="people-input"
+              placeholder="0"
+              required
+              aria-label="Enter amount of people"
+            />
+          </div>
+        </section>
+        <section class="screen">
+          <div class="tip-container">
+            <div class="tip">
+              <p>Tip Amount</p>
+              <p>/ person</p>
+            </div>
+            <div class="final-price" id="final-tip">$0.00</div>
+          </div>
+          <div class="total-container">
+            <div class="total">
+              <p>Total</p>
+              <p>/ person</p>
+            </div>
+            <div class="final-price" id="grand-total">$0.00</div>
+          </div>
+          <button class="reset-btn" id="reset-btn">Reset</button>
+        </section>
+      </div>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>

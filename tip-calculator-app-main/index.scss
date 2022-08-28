@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+
+/*==================
+General Styles
+==================*/
+$strong-cyan: hsl(172, 67%, 45%);
+$very-dark-cyan: hsl(183, 100%, 15%);
+$grayish-cyan: hsl(184, 14%, 56%);
+$dark-greyish-cyan: hsl(186, 14%, 43%);
+$light-greyish-cyan: hsl(185, 41%, 84%);
+$very-light-cyan: hsl(189, 41%, 97%);
+$white: white;
+
+@mixin flexbox($direction, $content, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $content;
+  align-items: $align;
+}
+
+:root {
+  font-size: 24px;
+  font-family: 'Space Mono', monospace;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $light-greyish-cyan;
+  box-sizing: border-box;
+}
+
+input {
+  background-color: $very-light-cyan;
+  font-size: 1rem;
+  font-family: 'Space Mono', monospace;
+  border: 2px solid white;
+  border-radius: 5px;
+  text-align: right;
+  color: $very-dark-cyan;
+  font-weight: bold;
+
+  &:active, &:focus {
+    outline: none;
+    border: 2px solid $strong-cyan;
+  }
+
+  &::placeholder {
+    color: $light-greyish-cyan;
+  }
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+/*=======================
+Small Header
+=======================*/
+
+header {
+  @include flexbox(row, center, center);
+  width: 100%;
+  margin-bottom: 0;
+
+  .page-title {
+    color: $dark-greyish-cyan;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    font-size: 0.8em;
+  }
+}
+
+/*=====================
+Calculator
+=====================*/
+
+/*General Styles in Calculator*/
+
+.descr {
+  margin-bottom: 0.2em;
+  color: $grayish-cyan;
+  font-size: 0.7em;
+}
+
+button {
+  cursor: pointer;
+}
+
+.active {
+  display: none;
+}
+
+.input-label {
+  @include flexbox(row, space-between, flex-end);
+
+  .error {
+    font-size: 0.7em;
+    margin-bottom: 0;
+    color: red;
+  }
+}
+
+/* Start of calculator style */
+
+.calculator {
+  @include flexbox(column, center, center);
+  min-width: 350px;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba($color: black, $alpha: 0.2);
+  background-color: white;
+  border-radius: 1rem;
+
+  .inputs-screen-container {
+    width: calc(100% - 20%);
+    margin-bottom: 1.5em;
+    margin-top: 0.5em;
+
+    /* Div that contains all the inputs and buttons */
+
+    .input-container {
+      @include flexbox(column, start, flex-start);
+      gap: 1em;
+      margin-bottom: 1em;
+      width: 100%;
+
+      .bill-amount{
+        width: 100%;
+        height: auto;
+
+        .bill-input {
+          background-image: url("images/icon-dollar.svg");
+          background-repeat: no-repeat;
+          background-position: center;
+          background-position-x: 0.8em;
+          width: inherit;
+          padding: 0.5em 0.8em 0.5em 1.8em;
+        }
+      }
+
+      .btn-grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: space-between;
+        gap: 0.7em;
+        position: relative;
+
+        .btn {
+          margin: 0;
+          width: 100%;
+          background-color: $very-dark-cyan;
+          color: white;
+          font-size: 1em;
+          font-family: 'Space Mono', monospace;
+          border: none;
+          border-radius: 5px;
+          transition: 0.3s;
+
+          &:hover, &:focus {
+            color: $very-dark-cyan;
+            background-color: $strong-cyan;
+          }
+        }
+
+        .custom-input {
+          font-family: 'Space Mono', monospace;
+          padding-right: 0.8em;
+          padding-left: 0.8em;
+          width: 100%;
+
+          &::placeholder {
+            color: $dark-greyish-cyan;
+          }
+        }
+        .custom-error {
+          position: absolute;
+          right: 0;
+          bottom: -28%;
+          font-size: 0.7em;
+          color: red;
+        }
+      }
+    }
+    .number-people {
+      width: 100%;
+      height: auto;
+      .people-input {
+        background-image: url("images/icon-person.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-position-x: 0.8em;
+        padding: 0.5em 0.8em 0.5em 1.8em;
+        width: 100%;
+      }
+    }
+
+    /* Div that contains the screen */
+
+    .screen {
+      @include flexbox(column, center, center);
+      width: 100%;
+      height: auto;
+      background-color: $very-dark-cyan;
+      border-radius: 10px;
+      padding: 1em 0;
+
+      .tip-container,
+      .total-container,
+      .reset-btn { 
+        width: calc(100% - 15%);
+        @include flexbox(row, space-between, center);
+      }
+
+      .tip p:first-child,
+      .total p:first-child {
+        margin: 0;
+        color: white;
+        font-size: 0.8em;
+      }
+  
+      .tip p:last-child,
+      .total p:last-child {
+        margin-top: 0;
+        font-size: 0.7em;
+        color: $dark-greyish-cyan;
+      }
+
+      .final-price {
+        font-size: 1.5em;
+        color: $strong-cyan;
+      }
+
+      .reset-btn {
+        @include flexbox(row, center, center);
+        padding: 0.3em 0;
+        margin-top: 1em;
+        border-radius: 5px;
+        border: none;
+        background-color: hsla(172, 67%, 45%, 0.3);
+        color: hsl(183, 100%, 15%, 0.5);
+        font-size: 1em;
+        font-family: 'Space Mono', monospace;
+        text-transform: uppercase;
+        transition: 0.2s;
+      }
+
+      .reset-btn:active {
+        background-color: hsl(172, 67%, 45%);
+        color: hsl(183, 100%, 15%);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 780px) {
+  .calculator {
+    min-width: 700px;
+    width: 100%;
+    max-width: 1000px;
+    height: 500px;
+
+    .inputs-screen-container {
+      @include flexbox(row, center, center);
+      gap: 3.5em;
+      width: calc(100% - 10%);
+  
+      .input-container {
+        @include flexbox(column, start, flex-start);
+        gap: 0.5em;
+  
+        .btn-grid {
+          grid-template-columns: 1fr 1fr 1fr;
+  
+          .btn {
+            padding: 0.4em 0;
+          }
+  
+          .custom-input {
+  
+            &::placeholder {
+              color: $dark-greyish-cyan;
+              font-size: 0.9em;
+            }
+          }
+          .custom-error {
+            position: absolute;
+            right: 0;
+            bottom: -28%;
+            font-size: 0.7em;
+            color: red;
+          }
+        }
+      }
+  
+      .screen {
+        height: 80%;
+
+        .tip-container {
+          margin-bottom: 1em;
+        }
+        
+        .reset-btn {
+          @include flexbox(row, center, center);
+          margin-top: 5em;
+        }
+  
+        .reset-btn:hover {
+          background-color: hsl(172, 67%, 45%);
+          color: hsl(183, 100%, 15%);
+        }
+      }
+    }
+  }
+}

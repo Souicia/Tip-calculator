@@ -1,0 +1,315 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap");
+/*==================
+General Styles
+==================*/
+:root {
+  font-size: 24px;
+  font-family: "Space Mono", monospace;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: hsl(185deg, 41%, 84%);
+  box-sizing: border-box;
+}
+
+input {
+  background-color: hsl(189deg, 41%, 97%);
+  font-size: 1rem;
+  font-family: "Space Mono", monospace;
+  border: 2px solid white;
+  border-radius: 5px;
+  text-align: right;
+  color: hsl(183deg, 100%, 15%);
+  font-weight: bold;
+}
+input:active, input:focus {
+  outline: none;
+  border: 2px solid hsl(172deg, 67%, 45%);
+}
+input::-moz-placeholder {
+  color: hsl(185deg, 41%, 84%);
+}
+input:-ms-input-placeholder {
+  color: hsl(185deg, 41%, 84%);
+}
+input::placeholder {
+  color: hsl(185deg, 41%, 84%);
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+/*=======================
+Small Header
+=======================*/
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0;
+}
+header .page-title {
+  color: hsl(186deg, 14%, 43%);
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  font-size: 0.8em;
+}
+
+/*=====================
+Calculator
+=====================*/
+/*General Styles in Calculator*/
+.descr {
+  margin-bottom: 0.2em;
+  color: hsl(184deg, 14%, 56%);
+  font-size: 0.7em;
+}
+
+button {
+  cursor: pointer;
+}
+
+.active {
+  display: none;
+}
+
+.input-label {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.input-label .error {
+  font-size: 0.7em;
+  margin-bottom: 0;
+  color: red;
+}
+
+/* Start of calculator style */
+.calculator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 350px;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  border-radius: 1rem;
+}
+.calculator .inputs-screen-container {
+  width: 80%;
+  margin-bottom: 1.5em;
+  margin-top: 0.5em;
+  /* Div that contains all the inputs and buttons */
+  /* Div that contains the screen */
+}
+.calculator .inputs-screen-container .input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+  gap: 1em;
+  margin-bottom: 1em;
+  width: 100%;
+}
+.calculator .inputs-screen-container .input-container .bill-amount {
+  width: 100%;
+  height: auto;
+}
+.calculator .inputs-screen-container .input-container .bill-amount .bill-input {
+  background-image: url("images/icon-dollar.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position-x: 0.8em;
+  width: inherit;
+  padding: 0.5em 0.8em 0.5em 1.8em;
+}
+.calculator .inputs-screen-container .input-container .btn-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  gap: 0.7em;
+  position: relative;
+}
+.calculator .inputs-screen-container .input-container .btn-grid .btn {
+  margin: 0;
+  width: 100%;
+  background-color: hsl(183deg, 100%, 15%);
+  color: white;
+  font-size: 1em;
+  font-family: "Space Mono", monospace;
+  border: none;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+.calculator .inputs-screen-container .input-container .btn-grid .btn:hover, .calculator .inputs-screen-container .input-container .btn-grid .btn:focus {
+  color: hsl(183deg, 100%, 15%);
+  background-color: hsl(172deg, 67%, 45%);
+}
+.calculator .inputs-screen-container .input-container .btn-grid .custom-input {
+  font-family: "Space Mono", monospace;
+  padding-right: 0.8em;
+  padding-left: 0.8em;
+  width: 100%;
+}
+.calculator .inputs-screen-container .input-container .btn-grid .custom-input::-moz-placeholder {
+  color: hsl(186deg, 14%, 43%);
+}
+.calculator .inputs-screen-container .input-container .btn-grid .custom-input:-ms-input-placeholder {
+  color: hsl(186deg, 14%, 43%);
+}
+.calculator .inputs-screen-container .input-container .btn-grid .custom-input::placeholder {
+  color: hsl(186deg, 14%, 43%);
+}
+.calculator .inputs-screen-container .input-container .btn-grid .custom-error {
+  position: absolute;
+  right: 0;
+  bottom: -28%;
+  font-size: 0.7em;
+  color: red;
+}
+.calculator .inputs-screen-container .number-people {
+  width: 100%;
+  height: auto;
+}
+.calculator .inputs-screen-container .number-people .people-input {
+  background-image: url("images/icon-person.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position-x: 0.8em;
+  padding: 0.5em 0.8em 0.5em 1.8em;
+  width: 100%;
+}
+.calculator .inputs-screen-container .screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  background-color: hsl(183deg, 100%, 15%);
+  border-radius: 10px;
+  padding: 1em 0;
+}
+.calculator .inputs-screen-container .screen .tip-container,
+.calculator .inputs-screen-container .screen .total-container,
+.calculator .inputs-screen-container .screen .reset-btn {
+  width: 85%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.calculator .inputs-screen-container .screen .tip p:first-child,
+.calculator .inputs-screen-container .screen .total p:first-child {
+  margin: 0;
+  color: white;
+  font-size: 0.8em;
+}
+.calculator .inputs-screen-container .screen .tip p:last-child,
+.calculator .inputs-screen-container .screen .total p:last-child {
+  margin-top: 0;
+  font-size: 0.7em;
+  color: hsl(186deg, 14%, 43%);
+}
+.calculator .inputs-screen-container .screen .final-price {
+  font-size: 1.5em;
+  color: hsl(172deg, 67%, 45%);
+}
+.calculator .inputs-screen-container .screen .reset-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3em 0;
+  margin-top: 1em;
+  border-radius: 5px;
+  border: none;
+  background-color: hsla(172deg, 67%, 45%, 0.3);
+  color: hsla(183deg, 100%, 15%, 0.5);
+  font-size: 1em;
+  font-family: "Space Mono", monospace;
+  text-transform: uppercase;
+  transition: 0.2s;
+}
+.calculator .inputs-screen-container .screen .reset-btn:active {
+  background-color: hsl(172deg, 67%, 45%);
+  color: hsl(183deg, 100%, 15%);
+}
+
+@media screen and (min-width: 780px) {
+  .calculator {
+    min-width: 700px;
+    width: 100%;
+    max-width: 1000px;
+    height: 500px;
+  }
+  .calculator .inputs-screen-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 3.5em;
+    width: 90%;
+  }
+  .calculator .inputs-screen-container .input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    gap: 0.5em;
+  }
+  .calculator .inputs-screen-container .input-container .btn-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .calculator .inputs-screen-container .input-container .btn-grid .btn {
+    padding: 0.4em 0;
+  }
+  .calculator .inputs-screen-container .input-container .btn-grid .custom-input::-moz-placeholder {
+    color: hsl(186deg, 14%, 43%);
+    font-size: 0.9em;
+  }
+  .calculator .inputs-screen-container .input-container .btn-grid .custom-input:-ms-input-placeholder {
+    color: hsl(186deg, 14%, 43%);
+    font-size: 0.9em;
+  }
+  .calculator .inputs-screen-container .input-container .btn-grid .custom-input::placeholder {
+    color: hsl(186deg, 14%, 43%);
+    font-size: 0.9em;
+  }
+  .calculator .inputs-screen-container .input-container .btn-grid .custom-error {
+    position: absolute;
+    right: 0;
+    bottom: -28%;
+    font-size: 0.7em;
+    color: red;
+  }
+  .calculator .inputs-screen-container .screen {
+    height: 80%;
+  }
+  .calculator .inputs-screen-container .screen .tip-container {
+    margin-bottom: 1em;
+  }
+  .calculator .inputs-screen-container .screen .reset-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5em;
+  }
+  .calculator .inputs-screen-container .screen .reset-btn:hover {
+    background-color: hsl(172deg, 67%, 45%);
+    color: hsl(183deg, 100%, 15%);
+  }
+}/*# sourceMappingURL=index.css.map */
